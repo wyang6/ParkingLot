@@ -4,7 +4,7 @@ class ParkingLot
     @capacity = capacity
   end
 
-  def has_empty_slot
-    true
+  def has_available_slots
+    return @capacity > 0
   end
 end
