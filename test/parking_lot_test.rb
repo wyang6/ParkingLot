@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require_relative "../src/parking_lot"
 require_relative "../src/car"
+require_relative "../src/no_available_slot_exception"
 
 class ParkingLotTest < MiniTest::Unit::TestCase
   def test_should_display_available_slots_typically
@@ -18,4 +19,12 @@ class ParkingLotTest < MiniTest::Unit::TestCase
     ticket = lot.park(Car.new)
     refute_nil ticket
   end
+
+  def test_should_throw_exception_when_there_is_no_available_slot
+    assert_raises(NoAvailableSlotException) {
+      lot = ParkingLot.new(0)
+      lot.park(Car.new)
+    }
+  end
+
 end

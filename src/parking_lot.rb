@@ -9,6 +9,10 @@ class ParkingLot
   end
 
   def park(car)
-    return 1
+    if  @capacity <1
+      raise(NoAvailableSlotException.new("no available slots!"))
+    else
+        return 1
+    end
   end
 end
